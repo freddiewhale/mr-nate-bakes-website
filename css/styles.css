@@ -135,7 +135,6 @@ p {
     border-color: var(--slate-blue);
 }
 
-/* Add some space between the nav links and the outer buttons */
 .main-header .btn-dark-outline {
     margin-right: 15px;
 }
@@ -510,38 +509,55 @@ p {
     margin-bottom: 15px;
 }
 
+/* --- Mobile Navigation Toggle --- */
+.mobile-nav-toggle {
+    display: none; /* This is the crucial part: HIDDEN BY DEFAULT (on desktop) */
+    background: none;
+    border: 2px solid var(--slate-blue);
+    color: var(--slate-blue);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
 
 /* --- Responsive Design --- */
 @media (max-width: 992px) {
     .main-header .container {
-        justify-content: space-between;
+        justify-content: space-between; /* Puts Home on left, button on right */
     }
+
+    /* Hide the desktop navigation links */
     .main-nav {
-        display: none; /* Keep this rule */
+        display: none;
         flex-direction: column;
         position: absolute;
-        top: 65px; /* Position below header */
+        top: 70px; /* Position it below the header */
         left: 0;
         width: 100%;
         background-color: var(--white);
         box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        padding: 20px;
+        padding: 10px 0;
+        border-bottom: 1px solid #eee;
     }
 
+    /* This class will be toggled by JavaScript to show the menu */
     .main-nav.active {
-        display: flex; /* Show the nav when active */
+        display: flex;
     }
 
     .main-nav a {
         margin: 10px 0;
         text-align: center;
+        padding: 10px;
     }
 
+    /* Show the hamburger button on mobile */
     .mobile-nav-toggle {
-        display: block; /* Show the hamburger button */
+        display: block;
     }
 
-    /* Hide the desktop buttons on mobile */
+    /* Hide the desktop "Contact" button */
     .main-header .btn-primary-outline {
         display: none;
     }
@@ -561,16 +577,8 @@ p {
     .hero-content h2 {
         font-size: 1.5rem;
     }
-    .main-header .container {
-        display: flex; /* Revert to flex for mobile layout */
-        justify-content: space-between; /* Space out items */
-        align-items: center;
-    }
-    .main-header .btn-dark-outline {
-        display: inline-block;
-        margin-right: 0;
-    }
-    .bakes-grid, .about-grid, .footer-grid, .market-details-grid, .story-row, .contact-grid {
+
+    .bakes-grid, .about-grid, .footer-grid, .market-details-grid, .story-row, .contact-grid, .contact-options-grid, .quotes-grid {
         grid-template-columns: 1fr;
     }
     .about-grid, .footer-grid {
@@ -579,21 +587,20 @@ p {
     .story-row .story-image {
         order: 0;
     }
-    .footer-logo {
-        margin-bottom: 20px;
-    }
-    /* --- ADD THESE NEW FOOTER RULES --- */
+
+    /* --- MORE AGGRESSIVE FOOTER SPACING --- */
     .main-footer {
-        padding: 40px 0 15px 0; /* Reduce top padding */
+        padding: 30px 0 15px 0; /* Reduced top padding */
+    }
+    .footer-grid {
+        gap: 25px; /* Reduced space between columns */
+        margin-bottom: 25px;
     }
     .footer-about .footer-logo-text {
-        font-size: 1.3rem; /* Make the logo text smaller */
+        font-size: 1.3rem;
     }
     .footer-grid h4 {
-        font-size: 1rem; /* Make the headings smaller */
-    }
-    .footer-grid ul li a {
-        font-size: 0.9rem; /* Make the links smaller */
+        font-size: 1.1rem; /* Slightly larger than before but still compact */
     }
 }
 
@@ -737,24 +744,4 @@ p {
     max-width: 600px;
     margin: 0 auto 30px auto;
     color: #666;
-}
-
-@media (max-width: 768px) {
-    .contact-options-grid,
-    .quotes-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* --- Mobile Navigation Toggle --- */
-.mobile-nav-toggle {
-    display: none; /* Hidden on desktop */
-    background: none;
-    border: 2px solid var(--slate-blue);
-    color: var(--slate-blue);
-    font-size: 1.5rem;
-    cursor: pointer;
-    padding: 5px 10px;
-    border-radius: 5px;
-    margin-left: auto; /* Pushes it to the right */
 }
