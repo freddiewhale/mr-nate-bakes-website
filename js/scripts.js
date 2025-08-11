@@ -1,3 +1,11 @@
+// --- Mobile Navigation ---
+const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+const mainNav = document.querySelector('.main-nav');
+
+mobileNavToggle.addEventListener('click', () => {
+    mainNav.classList.toggle('active');
+});
+
 // This code finds all the tab buttons and content panes on the page.
 const tabLinks = document.querySelectorAll('.tab-link');
 const tabPanes = document.querySelectorAll('.tab-pane');
