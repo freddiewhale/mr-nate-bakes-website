@@ -143,6 +143,18 @@ p {
     margin-left: 15px;
 }
 
+/* --- Mobile Navigation Toggle --- */
+.mobile-nav-toggle {
+    display: none; /* Hidden on desktop by default */
+    background: none;
+    border: 2px solid var(--slate-blue);
+    color: var(--slate-blue);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
 
 /* --- Hero Section --- */
 #hero {
@@ -509,30 +521,24 @@ p {
     margin-bottom: 15px;
 }
 
-/* --- Mobile Navigation Toggle --- */
-.mobile-nav-toggle {
-    display: none; /* This is the crucial part: HIDDEN BY DEFAULT (on desktop) */
-    background: none;
-    border: 2px solid var(--slate-blue);
-    color: var(--slate-blue);
-    font-size: 1.5rem;
-    cursor: pointer;
-    padding: 5px 10px;
-    border-radius: 5px;
-}
-
 /* --- Responsive Design --- */
 @media (max-width: 992px) {
     .main-header .container {
-        justify-content: space-between; /* Puts Home on left, button on right */
+        justify-content: space-between;
     }
 
-    /* Hide the desktop navigation links */
-    .main-nav {
+    /* Hide the desktop nav and contact button */
+    .main-header .main-nav,
+    .main-header .btn-primary-outline {
         display: none;
+    }
+
+    /* This is the mobile dropdown menu style */
+    .main-nav.mobile-active {
+        display: flex;
         flex-direction: column;
         position: absolute;
-        top: 70px; /* Position it below the header */
+        top: 70px;
         left: 0;
         width: 100%;
         background-color: var(--white);
@@ -540,26 +546,14 @@ p {
         padding: 10px 0;
         border-bottom: 1px solid #eee;
     }
-
-    /* This class will be toggled by JavaScript to show the menu */
-    .main-nav.active {
-        display: flex;
-    }
-
-    .main-nav a {
-        margin: 10px 0;
+    .main-nav.mobile-active a {
         text-align: center;
         padding: 10px;
     }
 
-    /* Show the hamburger button on mobile */
+    /* Show the hamburger button */
     .mobile-nav-toggle {
         display: block;
-    }
-
-    /* Hide the desktop "Contact" button */
-    .main-header .btn-primary-outline {
-        display: none;
     }
 
     .bakes-grid {
@@ -578,7 +572,7 @@ p {
         font-size: 1.5rem;
     }
 
-    .bakes-grid, .about-grid, .footer-grid, .market-details-grid, .story-row, .contact-grid, .contact-options-grid, .quotes-grid {
+    .bakes-grid, .about-grid, .footer-grid, .market-details-grid, .story-row, .contact-options-grid, .quotes-grid {
         grid-template-columns: 1fr;
     }
     .about-grid, .footer-grid {
@@ -587,20 +581,20 @@ p {
     .story-row .story-image {
         order: 0;
     }
-
-    /* --- MORE AGGRESSIVE FOOTER SPACING --- */
+    
+    /* MORE AGGRESSIVE FOOTER SPACING */
     .main-footer {
-        padding: 30px 0 15px 0; /* Reduced top padding */
+        padding: 30px 20px 15px 20px;
     }
     .footer-grid {
-        gap: 25px; /* Reduced space between columns */
+        gap: 25px;
         margin-bottom: 25px;
     }
     .footer-about .footer-logo-text {
         font-size: 1.3rem;
     }
     .footer-grid h4 {
-        font-size: 1.1rem; /* Slightly larger than before but still compact */
+        font-size: 1.1rem;
     }
 }
 
